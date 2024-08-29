@@ -31,11 +31,7 @@ This file contains the core classes and functions required for the simulation:
     - The agent can take one of four actions corresponding to moving North (`'N'`), South (`'S'`), West (`'W'`), or East (`'E'`).
   - **Methods**:
     - `choose_action(self)`: The agent selects an action based on the epsilon-greedy policy. It either chooses the best action according to the Q-table or explores a random action based on the value of `epsilon`.
-    - `learn(self, current_state, action, reward, next_state)`: This method updates the Q-value for a given state-action pair using the Q-learning formula:
-    \[
-    Q(s, a) = Q(s, a) + lpha 	imes \left( 	ext{reward} + \gamma 	imes \max_{a'} Q(s', a') - Q(s, a) 
-ight)
-    \]
+    - `learn(self, current_state, action, reward, next_state)`: This method updates the Q-value for a given state-action pair using Q-learning or SARSA update rules.
     where `s` is the current state, `a` is the action taken, `s'` is the next state, and `a'` represents the possible actions from `s'`.
     - `reset(self)`: Resets the agent's position to the starting position and optionally resets the Q-table and other learning parameters.
     - `update_position(self, action)`: Updates the agent's position based on the action taken.
