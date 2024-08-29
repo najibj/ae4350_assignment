@@ -24,7 +24,6 @@ This file contains the core classes and functions required for the simulation:
 This is the main script that runs the simulation:
 
 - **`set_random_seed(seed)`**: Sets the random seed for reproducibility.
-- **`reset_agents(agents, grid, epsilon, alpha, gamma)`**: Resets the agents' parameters such as epsilon, alpha, and gamma, which are commonly used in reinforcement learning.
 - **Simulation and Training**:
   - The script initializes the grid and agents, sets up the simulation parameters, and runs the training and simulation loops.
   - It also includes plotting functions to visualize the training progress and agent paths.
