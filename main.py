@@ -9,14 +9,6 @@ def set_random_seed(seed):
     random.seed(seed)
     np.random.seed(seed)
 
-def reset_agents(agents, grid, epsilon, alpha, gamma):
-    for agent in agents:
-        agent.epsilon = epsilon
-        agent.alpha = alpha
-        agent.gamma = gamma
-        np.zeros((grid.height, grid.width, 4))
-    print('Agents reset to baseline')
-
 def run_qlearning(seed, grid_parameters, learning_parameters, reward_values, episodes, agents_per_terminal=1, delta_pheromone = 0.05, pheromone_decay_rate=0.7, sensitivity=False, convergence_tol=0.0):
     
     set_random_seed(seed)
