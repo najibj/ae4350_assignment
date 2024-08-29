@@ -17,7 +17,30 @@ This file contains the core classes and functions required for the simulation:
   - **Methods**:
     - `generate_grid()`: Generates the grid layout based on the provided parameters.
     - Other utility methods for grid management and interaction with agents.
-- **Additional classes (e.g., `Agent`) and functions** related to agent behavior and interaction with the grid, training routines, and visualization tools.
+- **`Agent`**: Represents an individual agent in the grid environment. It includes:
+  - **Attributes**:
+    - `id`: A unique identifier for each agent.
+    - `start_pos`: The starting position of the agent on the grid.
+    - `position`: The current position of the agent, which is initially set to `start_pos`.
+    - `grid`: A reference to the `Grid` object in which the agent operates.
+    - `q_table`: A 3D NumPy array that holds the Q-values for each state-action pair. The dimensions are `(grid.height, grid.width, 4)`, where `4` represents the four possible actions (North, South, West, East).
+    - `epsilon`: The exploration rate, which determines the probability of the agent choosing a random action (exploration) versus the action with the highest Q-value (exploitation).
+    - `alpha`: The learning rate, controlling how much new information overrides the old information in the Q-value update.
+    - `gamma`: The discount factor, which determines the importance of future rewards.
+  - **Actions**:
+    - The agent can take one of four actions corresponding to moving North (`'N'`), South (`'S'`), West (`'W'`), or East (`'E'`).
+  - **Methods**:
+    - `choose_action(self)`: The agent selects an action based on the epsilon-greedy policy. It either chooses the best action according to the Q-table or explores a random action based on the value of `epsilon`.
+    - `learn(self, current_state, action, reward, next_state)`: This method updates the Q-value for a given state-action pair using the Q-learning formula:
+    \[
+    Q(s, a) = Q(s, a) + lpha 	imes \left( 	ext{reward} + \gamma 	imes \max_{a'} Q(s', a') - Q(s, a) 
+ight)
+    \]
+    where `s` is the current state, `a` is the action taken, `s'` is the next state, and `a'` represents the possible actions from `s'`.
+    - `reset(self)`: Resets the agent's position to the starting position and optionally resets the Q-table and other learning parameters.
+    - `update_position(self, action)`: Updates the agent's position based on the action taken.
+
+- **Additional functions** related to agent behavior and interaction with the grid, training routines, and visualization tools.
 
 ### `main.py`
 
